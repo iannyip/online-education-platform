@@ -8,6 +8,9 @@ export default function initLessonModel(sequelize, DataTypes) {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
+      title: {
+        type: DataTypes.STRING,
+      },
       task: {
         type: DataTypes.STRING,
       },

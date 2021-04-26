@@ -31,6 +31,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      title: {
+        type: Sequelize.TEXT,
+      },
       task: {
         type: Sequelize.TEXT,
       },
