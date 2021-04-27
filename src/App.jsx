@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 import LeftMenu from "./components/LeftMenu.jsx";
 
 export default function App() {
   const [currentLesson, setCurrentLesson] = useState();
+
+  useEffect(() => {
+    // get the first lessons
+    const firstLesson = 1;
+    axios
+      .get(`/lessons/${firstLesson}`)
+      .then((result) => {
+        setCurrentLesson(result.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
     <div className="container">

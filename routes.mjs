@@ -13,6 +13,7 @@ export default function routes(app) {
 
   app.get("/test", UserController.index);
   app.get("/titleIndex", LessonController.index);
+  app.get("/lessons/:id", LessonController.show);
 
   // special JS page. Include the webpack index.html file
   app.get("/home", (request, response) => {
