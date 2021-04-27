@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 import LeftMenu from "./components/LeftMenu.jsx";
 
 export default function App() {
+  const [currentLesson, setCurrentLesson] = useState();
+
   return (
     <div className="container">
       <div className="row">
