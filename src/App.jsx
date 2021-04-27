@@ -13,6 +13,7 @@ export default function App() {
     axios
       .get(`/lessons/${firstLesson}`)
       .then((result) => {
+        console.log(result.data);
         setCurrentLesson(result.data);
       })
       .catch((error) => console.log(error));
@@ -25,7 +26,7 @@ export default function App() {
           <LeftMenu />
         </div>
         <div className="col-8 row">
-          <LessonTitle />
+          <LessonTitle currentLesson={currentLesson} />
           <div className="row">Hello</div>
           <div className="row">Goodby</div>
         </div>
