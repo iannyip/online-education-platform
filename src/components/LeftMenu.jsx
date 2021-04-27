@@ -8,15 +8,13 @@ export default function LeftMenu() {
     axios
       .get("/titleIndex")
       .then((result) => {
-        console.log(result.data);
         setLessons(result.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   const jsxLessonTitles = lessons.map((lesson) => {
-    console.log("inside jsxLessonTitles");
-    return <li>{lesson}</li>;
+    return <li key={lesson}>{lesson}</li>;
   });
 
   return (
