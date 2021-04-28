@@ -10,6 +10,7 @@ export default function CodeEditor() {
       defaultLanguage="javascript"
       defaultValue="// Write your code here"
       theme="vs-dark"
+      loading="🤗  Loading... 🤗"
     />
   );
 }
