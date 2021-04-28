@@ -43,7 +43,6 @@ export default function App() {
             <LessonDetail className="row" currentLesson={currentLesson} />
           )}
           <CodeEditor className="row" />
-          <div className="row">Goodby</div>
         </div>
       </div>
     </div>

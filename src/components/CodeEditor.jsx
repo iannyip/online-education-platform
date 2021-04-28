@@ -1,9 +1,16 @@
 import React from "react";
+import ReactDOM from "react-dom";
+
+import Editor from "@monaco-editor/react";
 
 export default function CodeEditor() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <Editor
+      className="editor-style"
+      height="300px"
+      defaultLanguage="javascript"
+      defaultValue="// Write your code here"
+      theme="vs-dark"
+    />
   );
 }
