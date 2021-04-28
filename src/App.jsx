@@ -35,14 +35,18 @@ export default function App() {
         <div className="col-4">
           <LeftMenu lessonTitles={lessonTitles} />
         </div>
-        <div className="col-8 row">
-          {currentLesson && (
-            <LessonTitle className="row" currentLesson={currentLesson} />
-          )}
-          {currentLesson && (
-            <LessonDetail className="row" currentLesson={currentLesson} />
-          )}
-          <CodeEditor className="row" />
+        <div className="col-8 ">
+          <div className="row lesson-content">
+            {currentLesson && (
+              <LessonTitle className="col-12" currentLesson={currentLesson} />
+            )}
+            {currentLesson && (
+              <LessonDetail className="col-12" currentLesson={currentLesson} />
+            )}
+          </div>
+          <div className="row editor-style">
+            <CodeEditor />
+          </div>
         </div>
       </div>
     </div>

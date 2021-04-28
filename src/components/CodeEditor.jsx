@@ -6,7 +6,6 @@ import Editor from "@monaco-editor/react";
 export default function CodeEditor() {
   return (
     <Editor
-      className="editor-style"
       height="300px"
       defaultLanguage="javascript"
       defaultValue="// Write your code here"
