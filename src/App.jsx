@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <div className="container">
-      <div className="row">
+      <div className="row mt-4">
         <div className="col-4">
           <LeftMenu lessonTitles={lessonTitles} />
         </div>
