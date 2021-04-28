@@ -1,19 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function LeftMenu() {
-  const [lessons, setLessons] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/titleIndex")
-      .then((result) => {
-        setLessons(result.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  const jsxLessonTitles = lessons.map((lesson) => {
+export default function LeftMenu({ lessonTitles }) {
+  const jsxLessonTitles = lessonTitles.map((lesson) => {
     return <li key={lesson}>{lesson}</li>;
   });
 
