@@ -26,11 +26,14 @@ body {
 }
 
 .editor-style {
-  border-radius: 10px;
 }
 
 .console-style {
   background-color: #1e1e1e;
   color: white;
   height: 100px;
+  border-radius: 10px;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 13px;
 }
