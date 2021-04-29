@@ -46,6 +46,7 @@ export default function CodeEditor() {
       <button onClick={getCode} className="btn btn-success mt-2">
         Show Value
       </button>
+      <div className="console-style">Output</div>
     </div>
   );
 }
