@@ -14,22 +14,14 @@ export default function App() {
   const [lessonTitles, setlessonTitles] = useState({});
 
   const changeLesson = (newLessonNo) => {
-    console.log(`Going to change lesson with ${newLessonNo}`);
-    // setCurrentLessonNo(newLessonNo);
+    setCurrentLessonNo(newLessonNo);
   };
 
   useEffect(() => {
     // get the first lesson
     console.log("I should be running one time");
-    const firstLesson = 1;
 
-    axios
-      .get(`/lessons/${currentLessonNo}`)
-      .then((result) => {
-        setCurrentLesson(result.data);
-      })
-      .catch((error) => console.log(error));
-
+    setCurrentLessonNo(1);
     axios
       .get("/titleIndex")
       .then((result) => {
@@ -37,6 +29,16 @@ export default function App() {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  // USEEFFECT - runs when currentLessonNo updates
+  useEffect(() => {
+    axios
+      .get(`/lessons/${currentLessonNo}`)
+      .then((result) => {
+        setCurrentLesson(result.data);
+      })
+      .catch((error) => console.log(error));
+  }, [currentLessonNo]);
 
   return (
     <div className="container">
