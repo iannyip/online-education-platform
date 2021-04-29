@@ -6,6 +6,8 @@ import LessonTitle from "./components/LessonTitle.jsx";
 import LessonDetail from "./components/LessonDetail.jsx";
 import CodeEditor from "./components/CodeEditor.jsx";
 
+// import testFunctions from "./tests.mjs";
+
 export default function App() {
   const [currentLesson, setCurrentLesson] = useState();
   const [lessonTitles, setlessonTitles] = useState([]);

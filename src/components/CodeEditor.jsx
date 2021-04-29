@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import Editor from "@monaco-editor/react";
+import testFunctions from "../tests.mjs";
 
 const runCode = (codeString) => {
   try {
+    const testFuncs = testFunctions();
     // oldLog = console.log;
     // console.log = (message) => {
     //   alert(message);
@@ -10,10 +12,12 @@ const runCode = (codeString) => {
     // const output = new Function(codeString)();
 
     console.log(codeString);
-    eval(codeString);
-    const output = eval(codeString);
+    // eval(codeString);
+    // const output = eval(codeString);
 
-    console.log(`captured result: ${output}`);
+    console.log(`captured result: ${codeString}`);
+    const outcome = testFuncs["consolelog"](codeString);
+    console.log(`captured outcome: ${outcome[1]}`);
 
     // console.log(`captured result: ${oldLog}`);
   } catch (error) {
@@ -21,7 +25,7 @@ const runCode = (codeString) => {
   }
 };
 
-export default function CodeEditor() {
+export default function CodeEditor({ testFunctions }) {
   const editorRef = useRef(null);
 
   const handleEditorDidMount = (editor, monaco) => {
