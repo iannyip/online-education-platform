@@ -28,21 +28,25 @@ module.exports = {
       {
         title: "Console Logs",
         task: "Print 'Hello World!'",
-        expected_output: "Hello World!",
+        template: "",
+        test: "consolelog",
         created_at: new Date(),
         updated_at: new Date(),
       },
       {
         title: "Comments",
         task: "Use two slashes (/) to add a comment",
-        expected_output: "Goodbye World!",
+        template: "",
+        test: "comment",
         created_at: new Date(),
         updated_at: new Date(),
       },
       {
         title: "Data Types",
-        task: "Try printing a number instead.",
-        expected_output: "Goodbye World!",
+        task:
+          "Try assigning the number 42 to the variable 'a' by typing: <br> a = 42",
+        template: "",
+        test: "datatypeA",
         created_at: new Date(),
         updated_at: new Date(),
       },
@@ -50,7 +54,8 @@ module.exports = {
         title: "Arithmetic Operators",
         task:
           "You can use the + operator to add numbers together! Try adding 2 + 2.",
-        expected_output: "4",
+        template: "",
+        test: "simpleAddition",
         created_at: new Date(),
         updated_at: new Date(),
       },
@@ -58,7 +63,26 @@ module.exports = {
         title: "String Concatenation",
         task:
           "When a + operator is used on two strings, it joins them together! <br> Try joining 'Hello' and 'World' together!",
-        expected_output: "4",
+        template: "",
+        test: "stringConcat",
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        title: "Functions",
+        task:
+          "A function does something to some input(s). In this case, add a and b together to complete the function!",
+        template: "var myFunction = function(a, b) {return a + b;}",
+        test: "addFunction",
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        title: "Functions with strings",
+        task: "use toUpperCase() to modify this string",
+        template:
+          "var myFunction = function(inputString) {return inputString;}",
+        test: "addFunction",
         created_at: new Date(),
         updated_at: new Date(),
       },

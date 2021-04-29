@@ -37,7 +37,10 @@ module.exports = {
       task: {
         type: Sequelize.TEXT,
       },
-      expected_output: {
+      template: {
+        type: Sequelize.TEXT,
+      },
+      test: {
         type: Sequelize.TEXT,
       },
       created_at: {

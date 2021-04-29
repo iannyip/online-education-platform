@@ -14,7 +14,10 @@ export default function initLessonModel(sequelize, DataTypes) {
       task: {
         type: DataTypes.STRING,
       },
-      expectedOutput: {
+      template: {
+        type: DataTypes.STRING,
+      },
+      test: {
         type: DataTypes.STRING,
       },
       createdAt: {
