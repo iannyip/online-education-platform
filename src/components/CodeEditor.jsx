@@ -3,19 +3,19 @@ import Editor from "@monaco-editor/react";
 
 const runCode = (codeString) => {
   try {
-    const output = new Function(codeString)();
+    // oldLog = console.log;
+    // console.log = (message) => {
+    //   alert(message);
+    // };
+    // const output = new Function(codeString)();
 
-    let oldLog;
-    (function () {
-      oldLog = console.log;
-      console.log = function (message) {
-        // DO MESSAGE HERE.
-        // console.log(`the message is: ${message}`);
-        oldLog.apply(console, arguments);
-      };
-    })();
+    console.log(codeString);
+    eval(codeString);
+    const output = eval(codeString);
 
-    console.log(`captured result: ${oldLog}`);
+    console.log(`captured result: ${output}`);
+
+    // console.log(`captured result: ${oldLog}`);
   } catch (error) {
     console.log(error);
   }

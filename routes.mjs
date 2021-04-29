@@ -11,7 +11,7 @@ export default function routes(app) {
     response.redirect("/home");
   });
 
-  app.get("/test", UserController.index);
+  app.get("/test", UserController["index"]);
   app.get("/titleIndex", LessonController.index);
   app.get("/lessons/:id", LessonController.show);
 
