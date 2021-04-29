@@ -15,17 +15,27 @@ const runCode = (codeString, functionName) => {
 };
 
 export default function CodeEditor({ currentLesson }) {
+  console.log("re-rendering CodeEdits...");
   console.log(currentLesson.template);
   // const editorRef = useRef(null);
   const editorRef = useRef();
+  const [editorVal, setEditorVal] = useState(currentLesson.template);
   const [output, setOutput] = useState(" ");
   const [wrongOutcome, setWrongOutcome] = useState(false);
   const [rightOutcome, setRightOutcome] = useState(false);
 
   const handleEditorDidMount = (editor, monaco) => {
     editorRef.current = editor;
+    // Tried passing in the value here
     editorRef.current.defaultValue = "earth to mars";
   };
+
+  const handleEditorChange = (event) => {
+    // console.log(event.target.value);
+    // setEditorVal(event.target.value);
+  };
+
+  console.log(`As it is, editorVal is ${editorVal}`);
 
   const getCode = () => {
     // alert(editorRef.current.getValue());
@@ -35,19 +45,20 @@ export default function CodeEditor({ currentLesson }) {
     setRightOutcome(outcome[0]);
     console.log(`This is the ${outcome[0]}`);
   };
-
-  const someText = currentLesson.template;
-  console.log(`someText: ${someText}`);
+  // HELLP for some reason, cannot pass a string variable containing template
+  // const someText = currentLesson.template;
+  const someText = "// write code here!";
+  // console.log(`someText: ${someText}`);
   return (
     <div>
       <Editor
-        ref={editorRef}
         height="200px"
         defaultLanguage="javascript"
-        defaultValue={someText}
+        defaultValue={editorVal}
         theme="vs-dark"
         loading="🤗  Loading... 🤗"
         onMount={handleEditorDidMount}
+        onChange={handleEditorChange}
       />
       <div className="d-flex justify-content-md-end py-2">
         {wrongOutcome && (
