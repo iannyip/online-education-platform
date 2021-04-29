@@ -9,15 +9,22 @@ import CodeEditor from "./components/CodeEditor.jsx";
 // import testFunctions from "./tests.mjs";
 
 export default function App() {
+  const [currentLessonNo, setCurrentLessonNo] = useState(1);
   const [currentLesson, setCurrentLesson] = useState();
-  const [lessonTitles, setlessonTitles] = useState([]);
+  const [lessonTitles, setlessonTitles] = useState({});
+
+  const changeLesson = (newLessonNo) => {
+    console.log(`Going to change lesson with ${newLessonNo}`);
+    // setCurrentLessonNo(newLessonNo);
+  };
 
   useEffect(() => {
     // get the first lesson
+    console.log("I should be running one time");
     const firstLesson = 1;
 
     axios
-      .get(`/lessons/${firstLesson}`)
+      .get(`/lessons/${currentLessonNo}`)
       .then((result) => {
         setCurrentLesson(result.data);
       })
@@ -35,7 +42,7 @@ export default function App() {
     <div className="container">
       <div className="row mt-4">
         <div className="col-4">
-          <LeftMenu lessonTitles={lessonTitles} />
+          <LeftMenu lessonTitles={lessonTitles} changeLesson={changeLesson} />
         </div>
         <div className="col-8 ">
           <div className="row lesson-content">

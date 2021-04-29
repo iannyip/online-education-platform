@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function LeftMenu({ lessonTitles }) {
-  const jsxLessonTitles = lessonTitles.map((lesson) => {
-    return <li key={lesson}>{lesson}</li>;
-  });
+export default function LeftMenu({ lessonTitles, changeLesson }) {
+  const titlesarr = [];
+  for (const lessonNam in lessonTitles) {
+    // console.log(`${lessonNam}: ${lessonTitles[lessonNam]}`);
+    titlesarr.push(lessonNam);
+  }
+  const jsxLessonTitles = titlesarr.map((lesson) => (
+    <li
+      key={lesson}
+      className="left-menu-item"
+      onClick={() => {
+        changeLesson(lessonTitles[lesson]);
+      }}
+    >
+      {lesson}
+    </li>
+  ));
 
   return (
     <div className="left-menu">

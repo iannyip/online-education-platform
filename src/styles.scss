@@ -37,3 +37,12 @@ body {
   font-size: 14px;
   padding: 13px;
 }
+
+.left-menu-item {
+  transition: 0.3s;
+}
+
+.left-menu-item:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}

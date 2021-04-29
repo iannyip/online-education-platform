@@ -2,9 +2,9 @@ export default function initLessonsController(db) {
   const index = async (request, response) => {
     try {
       const lessons = await db.Lesson.findAll();
-      const titles = [];
+      const titles = {};
       lessons.forEach((lesson) => {
-        titles.push(lesson.title);
+        titles[lesson.title] = lesson.id;
       });
       response.send(titles);
     } catch (error) {
