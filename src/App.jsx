@@ -35,6 +35,7 @@ export default function App() {
     axios
       .get(`/lessons/${currentLessonNo}`)
       .then((result) => {
+        console.log(`received: ${result.data}`);
         setCurrentLesson(result.data);
       })
       .catch((error) => console.log(error));
@@ -56,7 +57,7 @@ export default function App() {
             )}
           </div>
           <div className="row editor-style">
-            <CodeEditor />
+            {currentLesson && <CodeEditor currentLesson={currentLesson} />}
           </div>
         </div>
       </div>
