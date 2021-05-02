@@ -25,9 +25,12 @@ export default function tests() {
         success = true;
       }
       message = cleanedString;
-      return [success, message];
+      return { success, message };
     } catch (error) {
       console.log(error);
+      success = false;
+      message = error;
+      return [success, message];
     }
   };
 

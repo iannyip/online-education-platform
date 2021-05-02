@@ -41,6 +41,10 @@ export default function App() {
       .catch((error) => console.log(error));
   }, [currentLessonNo]);
 
+  if (currentLesson) {
+    console.log(`The template: ${currentLesson.template}`);
+  }
+
   return (
     <div className="container">
       <div className="row mt-4">

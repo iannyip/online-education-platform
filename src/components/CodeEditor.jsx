@@ -1,5 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Editor from "@monaco-editor/react";
+import { basicSetup } from "@codemirror/basic-setup";
+import { EditorState } from "@codemirror/state";
+import { EditorView } from "@codemirror/view";
+import { javascript } from "@codemirror/lang-javascript";
+
 import testFunctions from "../tests.mjs";
 
 const runCode = (codeString, functionName) => {
@@ -15,27 +20,35 @@ const runCode = (codeString, functionName) => {
 };
 
 export default function CodeEditor({ currentLesson }) {
-  console.log("re-rendering CodeEdits...");
   console.log(currentLesson.template);
-  // const editorRef = useRef(null);
-  const editorRef = useRef();
+  const editor = useRef();
   const [editorVal, setEditorVal] = useState(currentLesson.template);
   const [output, setOutput] = useState(" ");
   const [wrongOutcome, setWrongOutcome] = useState(false);
   const [rightOutcome, setRightOutcome] = useState(false);
 
-  const handleEditorDidMount = (editor, monaco) => {
-    editorRef.current = editor;
-    // Tried passing in the value here
-    editorRef.current.defaultValue = "earth to mars";
-  };
+  // USE EFFECT TO SET UP CODE MIRROR
+  useEffect(() => {
+    const log = (event) => console.log(event);
+    // editor.current.addEventListener("input", log);
 
-  const handleEditorChange = (event) => {
-    // console.log(event.target.value);
-    // setEditorVal(event.target.value);
-  };
+    const templateBlank = `console.log("hellooee");`;
 
-  console.log(`As it is, editorVal is ${editorVal}`);
+    const state = EditorState.create({
+      doc: "A",
+      extensions: [basicSetup, javascript()],
+    });
+    const view = new EditorView({
+      state,
+      parent: editor.current,
+    });
+
+    // This is for unloading of component
+    return () => {
+      view.destroy();
+      // editor.current.removeEventListener("input", log);
+    };
+  }, []);
 
   const getCode = () => {
     // alert(editorRef.current.getValue());
@@ -45,21 +58,10 @@ export default function CodeEditor({ currentLesson }) {
     setRightOutcome(outcome[0]);
     console.log(`This is the ${outcome[0]}`);
   };
-  // HELLP for some reason, cannot pass a string variable containing template
-  // const someText = currentLesson.template;
-  const someText = "// write code here!";
-  // console.log(`someText: ${someText}`);
+
   return (
     <div>
-      <Editor
-        height="200px"
-        defaultLanguage="javascript"
-        defaultValue={editorVal}
-        theme="vs-dark"
-        loading="🤗  Loading... 🤗"
-        onMount={handleEditorDidMount}
-        onChange={handleEditorChange}
-      />
+      <div ref={editor}></div>
       <div className="d-flex justify-content-md-end py-2">
         {wrongOutcome && (
           <div className="my-0 alert alert-danger w-100">
