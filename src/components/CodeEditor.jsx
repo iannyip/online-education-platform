@@ -4,9 +4,11 @@ import { basicSetup } from "@codemirror/basic-setup";
 import { EditorState } from "@codemirror/state";
 import { EditorView } from "@codemirror/view";
 import { javascript } from "@codemirror/lang-javascript";
+import { oneDark } from "@codemirror/theme-one-dark";
 
 import testFunctions from "../tests.mjs";
 
+// HELPER FUNCTION
 const runCode = (codeString, functionName) => {
   try {
     const testFuncs = testFunctions();
@@ -19,6 +21,7 @@ const runCode = (codeString, functionName) => {
   }
 };
 
+// THE COMPONENT
 export default function CodeEditor({ currentLesson }) {
   console.log(currentLesson.template);
   const editor = useRef();
@@ -26,6 +29,8 @@ export default function CodeEditor({ currentLesson }) {
   const [output, setOutput] = useState(" ");
   const [wrongOutcome, setWrongOutcome] = useState(false);
   const [rightOutcome, setRightOutcome] = useState(false);
+
+  const editorUpdate = (event) => {};
 
   // USE EFFECT TO SET UP CODE MIRROR
   useEffect(() => {
@@ -35,12 +40,13 @@ export default function CodeEditor({ currentLesson }) {
     const templateBlank = `console.log("hellooee");`;
 
     const state = EditorState.create({
-      doc: "A",
-      extensions: [basicSetup, javascript()],
+      doc: "//Write your code here!",
+      extensions: [basicSetup, javascript(), oneDark],
     });
     const view = new EditorView({
       state,
       parent: editor.current,
+      // extensions: {EditorView.viewport: { from: 1, to: 10 }},
     });
 
     // This is for unloading of component
@@ -52,16 +58,12 @@ export default function CodeEditor({ currentLesson }) {
 
   const getCode = () => {
     // alert(editorRef.current.getValue());
-    const outcome = runCode(editorRef.current.getValue(), currentLesson.test);
-    setOutput(outcome[1]);
-    setWrongOutcome(!outcome[0]);
-    setRightOutcome(outcome[0]);
-    console.log(`This is the ${outcome[0]}`);
+    const outcome = runCode(editor.current.getValue(), currentLesson.test);
   };
 
   return (
     <div>
-      <div ref={editor}></div>
+      <div ref={editor}>fgf</div>
       <div className="d-flex justify-content-md-end py-2">
         {wrongOutcome && (
           <div className="my-0 alert alert-danger w-100">
