@@ -1,12 +1,15 @@
 export default function initLessonsController(db) {
   const index = async (request, response) => {
     try {
-      const lessons = await db.Lesson.findAll();
-      const titles = {};
-      lessons.forEach((lesson) => {
-        titles[lesson.title] = lesson.id;
+      const lessons = await db.Lesson.findAll({
+        attributes: ["id", "title", "premium"],
       });
-      response.send(titles);
+      console.log("lessons", lessons);
+      // const titles = {};
+      // lessons.forEach((lesson) => {
+      //   titles[lesson.title] = lesson.id;
+      // });
+      response.send(lessons);
     } catch (error) {
       console.log(error);
     }

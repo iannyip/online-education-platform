@@ -43,6 +43,9 @@ module.exports = {
       test: {
         type: Sequelize.TEXT,
       },
+      premium: {
+        type: Sequelize.INTEGER,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

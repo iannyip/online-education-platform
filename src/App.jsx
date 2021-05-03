@@ -11,10 +11,31 @@ import LoginModal from "./components/LoginModal.jsx";
 export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
   const [currentLesson, setCurrentLesson] = useState();
-  const [lessonTitles, setlessonTitles] = useState({});
+  const [lessonTitles, setlessonTitles] = useState([]);
   const [loginShow, setLoginShow] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    setCurrentLessonNo(1);
+    axios
+      .get("/titleIndex")
+      .then((result) => {
+        console.log("lessons: ", result.data);
+        setlessonTitles(result.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  // USEEFFECT - runs when currentLessonNo updates
+  useEffect(() => {
+    axios
+      .get(`/lessons/${currentLessonNo}`)
+      .then((result) => {
+        setCurrentLesson(result.data);
+      })
+      .catch((error) => console.log(error));
+  }, [currentLessonNo]);
 
   const showLoginModal = () => {
     setLoginShow(true);
@@ -52,26 +73,6 @@ export default function App() {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    setCurrentLessonNo(1);
-    axios
-      .get("/titleIndex")
-      .then((result) => {
-        setlessonTitles(result.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  // USEEFFECT - runs when currentLessonNo updates
-  useEffect(() => {
-    axios
-      .get(`/lessons/${currentLessonNo}`)
-      .then((result) => {
-        setCurrentLesson(result.data);
-      })
-      .catch((error) => console.log(error));
-  }, [currentLessonNo]);
-
   return (
     <div className="container pt-4">
       <MainNav
@@ -86,7 +87,9 @@ export default function App() {
       />
       <div className="row mt-4">
         <div className="col-4 mt-4">
-          <LeftMenu lessonTitles={lessonTitles} changeLesson={changeLesson} />
+          {lessonTitles && (
+            <LeftMenu LessonTitles={lessonTitles} changeLesson={changeLesson} />
+          )}
         </div>
         <div className="col-8 mt-4">
           <div className="row lesson-content">

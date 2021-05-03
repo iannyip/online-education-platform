@@ -20,6 +20,9 @@ export default function initLessonModel(sequelize, DataTypes) {
       test: {
         type: DataTypes.STRING,
       },
+      premium: {
+        type: DataTypes.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE,
