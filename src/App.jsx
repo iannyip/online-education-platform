@@ -13,6 +13,7 @@ export default function App() {
   const [currentLesson, setCurrentLesson] = useState();
   const [lessonTitles, setlessonTitles] = useState({});
   const [loginShow, setLoginShow] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   const showLoginModal = () => {
     console.log("enabling modal");

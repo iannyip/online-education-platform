@@ -14,6 +14,7 @@ export default function initUsersController(db) {
       console.log(request.body);
       const authedUser = await db.User.findOne({ where: request.body });
       if (authedUser !== null) {
+        response.cookie("UserId", authedUser.id);
         response.send("valid user");
       } else {
         response.send("invalid user");
