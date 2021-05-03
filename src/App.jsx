@@ -25,6 +25,7 @@ export default function App() {
     axios
       .get("/titleIndex")
       .then((result) => {
+        console.log(result.data);
         setlessonTitles(result.data);
       })
       .catch((error) => console.log(error));

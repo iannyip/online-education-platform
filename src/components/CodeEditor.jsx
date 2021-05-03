@@ -48,13 +48,18 @@ export default function CodeEditor({ currentLesson }) {
   }, [currentLesson]);
 
   const getCode = () => {
-    alert(editorVal);
     const outcome = runCode(editorVal);
     setOutput(outcome);
     console.log(`the correct answer is: ${currentLesson.test}`);
-    if (String(outcome) === currentLesson.test) {
+    const compareCorrect = new Function("answer", currentLesson.test);
+
+    if (compareCorrect(outcome)) {
       console.log("success!");
       setRightOutcome(true);
+      setWrongOutcome(false);
+    } else {
+      setWrongOutcome(true);
+      setRightOutcome(false);
     }
   };
 
