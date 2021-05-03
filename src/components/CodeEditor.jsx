@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
-import Editor from "@monaco-editor/react";
-import { basicSetup } from "@codemirror/basic-setup";
-import { EditorState } from "@codemirror/state";
-import { EditorView } from "@codemirror/view";
-import { javascript } from "@codemirror/lang-javascript";
-import { oneDark } from "@codemirror/theme-one-dark";
+
+import "codemirror/lib/codemirror.css";
+import "codemirror/theme/material.css";
+import "codemirror/mode/xml/xml";
+import "codemirror/mode/javascript/javascript";
+import "codemirror/mode/css/css";
+import { Controlled as ControlledEditor } from "react-codemirror2";
 
 import testFunctions from "../tests.mjs";
 
@@ -24,46 +25,33 @@ const runCode = (codeString, functionName) => {
 // THE COMPONENT
 export default function CodeEditor({ currentLesson }) {
   console.log(currentLesson.template);
-  const editor = useRef();
   const [editorVal, setEditorVal] = useState(currentLesson.template);
   const [output, setOutput] = useState(" ");
   const [wrongOutcome, setWrongOutcome] = useState(false);
   const [rightOutcome, setRightOutcome] = useState(false);
 
-  const editorUpdate = (event) => {};
-
-  // USE EFFECT TO SET UP CODE MIRROR
-  useEffect(() => {
-    const log = (event) => console.log(event);
-    // editor.current.addEventListener("input", log);
-
-    const templateBlank = `console.log("hellooee");`;
-
-    const state = EditorState.create({
-      doc: "//Write your code here!",
-      extensions: [basicSetup, javascript(), oneDark],
-    });
-    const view = new EditorView({
-      state,
-      parent: editor.current,
-      // extensions: {EditorView.viewport: { from: 1, to: 10 }},
-    });
-
-    // This is for unloading of component
-    return () => {
-      view.destroy();
-      // editor.current.removeEventListener("input", log);
-    };
-  }, []);
-
   const getCode = () => {
-    // alert(editorRef.current.getValue());
-    const outcome = runCode(editor.current.getValue(), currentLesson.test);
+    alert(editorVal);
+  };
+
+  const handleOnBeforeChange = (editor, data, value) => {
+    setEditorVal(value);
   };
 
   return (
     <div>
-      <div ref={editor}>fgf</div>
+      <ControlledEditor
+        onBeforeChange={handleOnBeforeChange}
+        value={editorVal}
+        className="code-mirror-wrapper"
+        options={{
+          lineWrapping: true,
+          lint: true,
+          mode: "javascript",
+          theme: "material",
+          lineNumbers: true,
+        }}
+      />
       <div className="d-flex justify-content-md-end py-2">
         {wrongOutcome && (
           <div className="my-0 alert alert-danger w-100">
