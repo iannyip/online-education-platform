@@ -21,7 +21,6 @@ export default function App() {
     axios
       .get("/titleIndex")
       .then((result) => {
-        console.log("lessons: ", result.data);
         setlessonTitles(result.data);
       })
       .catch((error) => console.log(error));
@@ -73,6 +72,18 @@ export default function App() {
       .catch((error) => console.log(error));
   };
 
+  const updateProgress = (editorValue) => {
+    console.log("about to post");
+    axios
+      .post("/attempts", { editorValue, userId, currentLessonNo })
+      .then((result) => {
+        console.log(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="container pt-4">
       <MainNav
@@ -105,7 +116,13 @@ export default function App() {
             )}
           </div>
           <div className="row editor-style">
-            {currentLesson && <CodeEditor currentLesson={currentLesson} />}
+            {currentLesson && (
+              <CodeEditor
+                currentLesson={currentLesson}
+                updateProgress={updateProgress}
+                userLoggedIn={userLoggedIn}
+              />
+            )}
           </div>
         </div>
       </div>

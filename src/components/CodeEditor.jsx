@@ -7,14 +7,9 @@ import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/css/css";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 
-import testFunctions from "../tests.mjs";
-
-const testString = "= (input) => {console.log(input);}";
-
 // HELPER FUNCTION
 const runCode = (codeString, functionName) => {
   try {
-    let testFunc;
     const answer = eval(codeString);
     return answer;
   } catch (error) {
@@ -24,7 +19,11 @@ const runCode = (codeString, functionName) => {
 };
 
 // THE COMPONENT
-export default function CodeEditor({ currentLesson }) {
+export default function CodeEditor({
+  currentLesson,
+  updateProgress,
+  userLoggedIn,
+}) {
   const [editorVal, setEditorVal] = useState(currentLesson.template);
   const [output, setOutput] = useState(" ");
   const [wrongOutcome, setWrongOutcome] = useState(false);
@@ -45,6 +44,9 @@ export default function CodeEditor({ currentLesson }) {
     if (compareCorrect(outcome)) {
       setRightOutcome(true);
       setWrongOutcome(false);
+      if (userLoggedIn) {
+        updateProgress(editorVal);
+      }
     } else {
       setWrongOutcome(true);
       setRightOutcome(false);

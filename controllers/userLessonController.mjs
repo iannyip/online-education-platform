@@ -10,7 +10,34 @@ export default function initUserLessonsController(db) {
 
   const create = async (request, response) => {
     try {
-      const submission = await db.UserLesson.create();
+      console.log(request.body);
+      const search = await db.UserLesson.findOne({
+        where: {
+          userId: request.body.userId,
+          lessonId: request.body.currentLessonNo,
+        },
+      });
+
+      if (search) {
+        const updatedSubmission = await db.UserLesson.update(
+          { savedCode: request.body.editorValue },
+          {
+            where: {
+              userId: request.body.userId,
+              lessonId: request.body.currentLessonNo,
+            },
+          }
+        );
+        response.sendStatus(200);
+      } else {
+        const submission = await db.UserLesson.create({
+          userId: request.body.userId,
+          lessonId: request.body.currentLessonNo,
+          savedCode: request.body.editorValue,
+        });
+        console.log(submission);
+        response.sendStatus(200);
+      }
     } catch (error) {
       console.log(error);
     }

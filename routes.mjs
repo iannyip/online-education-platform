@@ -19,7 +19,7 @@ export default function routes(app) {
   app.get("/test", UserController["index"]);
   app.post("/login", UserController.login);
 
-  app.get("/attempts", UserLessonController.index);
+  app.post("/attempts", UserLessonController.create);
 
   // special JS page. Include the webpack index.html file
   app.get("/home", (request, response) => {
