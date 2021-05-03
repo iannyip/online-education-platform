@@ -9,11 +9,15 @@ import { Controlled as ControlledEditor } from "react-codemirror2";
 
 import testFunctions from "../tests.mjs";
 
+const testString = "= (input) => {console.log(input);}";
+
 // HELPER FUNCTION
 const runCode = (codeString, functionName) => {
   try {
+    let testFunc;
     console.log("running code...");
     console.log(`captured result: ${codeString}`);
+    // const testy = testFunc(5); // new Function(testString);
     const answer = eval(codeString);
     console.log(`answer: ${answer}`);
     return answer;
@@ -38,12 +42,20 @@ export default function CodeEditor({ currentLesson }) {
   useEffect(() => {
     console.log("the lesson has changed. changing template");
     setEditorVal(currentLesson.template);
+    setOutput("");
+    setWrongOutcome(false);
+    setRightOutcome(false);
   }, [currentLesson]);
 
   const getCode = () => {
     alert(editorVal);
     const outcome = runCode(editorVal);
     setOutput(outcome);
+    console.log(`the correct answer is: ${currentLesson.test}`);
+    if (String(outcome) === currentLesson.test) {
+      console.log("success!");
+      setRightOutcome(true);
+    }
   };
 
   const handleOnBeforeChange = (editor, data, value) => {
