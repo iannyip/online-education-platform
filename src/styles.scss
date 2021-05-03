@@ -46,3 +46,13 @@ body {
   cursor: pointer;
   opacity: 0.5;
 }
+
+.modal-header-style {
+  border-bottom: 0px none;
+}
+
+.modal-footer-style {
+  border-top: 0px none;
+  text-align: center;
+  justify-content: center;
+}

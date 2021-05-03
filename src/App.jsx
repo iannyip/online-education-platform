@@ -6,6 +6,7 @@ import LessonTitle from "./components/LessonTitle.jsx";
 import LessonDetail from "./components/LessonDetail.jsx";
 import CodeEditor from "./components/CodeEditor.jsx";
 import MainNav from "./components/navbar.jsx";
+import LoginModal from "./components/LoginModal.jsx";
 
 export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
@@ -14,7 +15,13 @@ export default function App() {
   const [loginShow, setLoginShow] = useState(false);
 
   const showLoginModal = () => {
+    console.log("enabling modal");
     setLoginShow(true);
+  };
+
+  const hideLoginModal = () => {
+    console.log("disabling modal");
+    setLoginShow(false);
   };
 
   const changeLesson = (newLessonNo) => {
@@ -29,7 +36,7 @@ export default function App() {
     axios
       .get("/titleIndex")
       .then((result) => {
-        console.log(result.data);
+        // console.log(result.data);
         setlessonTitles(result.data);
       })
       .catch((error) => console.log(error));
@@ -40,19 +47,16 @@ export default function App() {
     axios
       .get(`/lessons/${currentLessonNo}`)
       .then((result) => {
-        console.log(`received: ${result.data}`);
+        // console.log(`received: ${result.data}`);
         setCurrentLesson(result.data);
       })
       .catch((error) => console.log(error));
   }, [currentLessonNo]);
 
-  if (currentLesson) {
-    console.log(`The template: ${currentLesson.template}`);
-  }
-
   return (
     <div className="container pt-4">
       <MainNav showLoginModal={showLoginModal} />
+      <LoginModal loginShow={loginShow} onHide={hideLoginModal} />
       <div className="row mt-4">
         <div className="col-4 mt-4">
           <LeftMenu lessonTitles={lessonTitles} changeLesson={changeLesson} />
