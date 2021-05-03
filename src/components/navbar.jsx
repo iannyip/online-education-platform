@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 
-export default function MainNav({ showLoginModal }) {
+export default function MainNav({ showLoginModal, userLoggedIn, logUserOut }) {
   return (
     <Navbar collapseOnSelect expand="md" bg="light" variant="light" fixed="top">
       <Container>
@@ -18,13 +18,24 @@ export default function MainNav({ showLoginModal }) {
             <Nav.Link href="#login" className="mx-4 fw-light">
               H O M E
             </Nav.Link>
-            <Nav.Link
-              href="#login"
-              className="mx-4 fw-light"
-              onClick={() => showLoginModal()}
-            >
-              L O G I N
-            </Nav.Link>
+            {!userLoggedIn && (
+              <Nav.Link
+                href="#login"
+                className="mx-4 fw-light"
+                onClick={() => showLoginModal()}
+              >
+                L O G I N
+              </Nav.Link>
+            )}
+            {userLoggedIn && (
+              <Nav.Link
+                href="#login"
+                className="mx-4 fw-light"
+                onClick={() => logUserOut()}
+              >
+                L O G O U T
+              </Nav.Link>
+            )}
             {/* <Nav.Link href="#deets">More deets</Nav.Link>
           <Nav.Link eventKey={2} href="#memes">
             Dank memes

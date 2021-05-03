@@ -24,6 +24,12 @@ export default function App() {
     setLoginShow(false);
   };
 
+  const logUserOut = () => {
+    console.log("logging out...");
+    setUserLoggedIn(false);
+    setUserId("");
+  };
+
   const changeLesson = (newLessonNo) => {
     setCurrentLessonNo(newLessonNo);
   };
@@ -51,7 +57,6 @@ export default function App() {
     axios
       .get("/titleIndex")
       .then((result) => {
-        // console.log(result.data);
         setlessonTitles(result.data);
       })
       .catch((error) => console.log(error));
@@ -62,7 +67,6 @@ export default function App() {
     axios
       .get(`/lessons/${currentLessonNo}`)
       .then((result) => {
-        // console.log(`received: ${result.data}`);
         setCurrentLesson(result.data);
       })
       .catch((error) => console.log(error));
@@ -70,7 +74,11 @@ export default function App() {
 
   return (
     <div className="container pt-4">
-      <MainNav showLoginModal={showLoginModal} />
+      <MainNav
+        showLoginModal={showLoginModal}
+        userLoggedIn={userLoggedIn}
+        logUserOut={logUserOut}
+      />
       <LoginModal
         loginShow={loginShow}
         onHide={hideLoginModal}
