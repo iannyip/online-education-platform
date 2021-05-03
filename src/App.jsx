@@ -11,6 +11,11 @@ export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
   const [currentLesson, setCurrentLesson] = useState();
   const [lessonTitles, setlessonTitles] = useState({});
+  const [loginShow, setLoginShow] = useState(false);
+
+  const showLoginModal = () => {
+    setLoginShow(true);
+  };
 
   const changeLesson = (newLessonNo) => {
     setCurrentLessonNo(newLessonNo);
@@ -47,7 +52,7 @@ export default function App() {
 
   return (
     <div className="container pt-4">
-      <MainNav />
+      <MainNav showLoginModal={showLoginModal} />
       <div className="row mt-4">
         <div className="col-4 mt-4">
           <LeftMenu lessonTitles={lessonTitles} changeLesson={changeLesson} />
