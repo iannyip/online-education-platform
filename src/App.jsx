@@ -5,8 +5,7 @@ import LeftMenu from "./components/LeftMenu.jsx";
 import LessonTitle from "./components/LessonTitle.jsx";
 import LessonDetail from "./components/LessonDetail.jsx";
 import CodeEditor from "./components/CodeEditor.jsx";
-
-// import testFunctions from "./tests.mjs";
+import MainNav from "./components/navbar.jsx";
 
 export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
@@ -47,12 +46,13 @@ export default function App() {
   }
 
   return (
-    <div className="container">
+    <div className="container pt-4">
+      <MainNav />
       <div className="row mt-4">
-        <div className="col-4">
+        <div className="col-4 mt-4">
           <LeftMenu lessonTitles={lessonTitles} changeLesson={changeLesson} />
         </div>
-        <div className="col-8 ">
+        <div className="col-8 mt-4">
           <div className="row lesson-content">
             {currentLesson && (
               <LessonTitle className="col-12" currentLesson={currentLesson} />
