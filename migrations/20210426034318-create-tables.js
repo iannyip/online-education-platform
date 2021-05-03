@@ -76,6 +76,9 @@ module.exports = {
           key: "id",
         },
       },
+      saved_code: {
+        type: Sequelize.TEXT,
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE,

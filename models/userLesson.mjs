@@ -8,19 +8,8 @@ export default function initUserLessonModel(sequelize, DataTypes) {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      userId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "users",
-          key: "id",
-        },
-      },
-      lessonId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "lessons",
-          key: "id",
-        },
+      savedCode: {
+        type: DataTypes.STRING,
       },
       createdAt: {
         allowNull: false,

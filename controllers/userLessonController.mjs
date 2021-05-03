@@ -1,10 +1,16 @@
-export default function initLessonsController(db) {
+export default function initUserLessonsController(db) {
   const index = async (request, response) => {
     try {
-      const lessons = await db.Lesson.findAll({
-        attributes: ["id", "title", "premium"],
-      });
-      response.send(lessons);
+      const attempts = await db.UserLesson.findAll();
+      response.send(attempts);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const create = async (request, response) => {
+    try {
+      const submission = await db.UserLesson.create();
     } catch (error) {
       console.log(error);
     }
@@ -25,6 +31,7 @@ export default function initLessonsController(db) {
   // RETURN
   return {
     index,
+    create,
     show,
   };
 }
