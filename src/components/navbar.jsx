@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 
-export default function MainNav() {
-  console.log("making navbar...");
-
+export default function MainNav({ showLoginModal }) {
   return (
     <Navbar collapseOnSelect expand="md" bg="light" variant="light" fixed="top">
       <Container>
@@ -20,7 +18,11 @@ export default function MainNav() {
             <Nav.Link href="#login" className="mx-4 fw-light">
               H O M E
             </Nav.Link>
-            <Nav.Link href="#login" className="mx-4 fw-light">
+            <Nav.Link
+              href="#login"
+              className="mx-4 fw-light"
+              onClick={() => showLoginModal()}
+            >
               L O G I N
             </Nav.Link>
             {/* <Nav.Link href="#deets">More deets</Nav.Link>
