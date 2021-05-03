@@ -17,7 +17,9 @@ export default function LeftMenu({ LessonTitles, changeLesson, userLoggedIn }) {
       {lesson.title}
       {/* {<span className="access-status-style">✔️</span>} */}
       {lesson.premium === 1 && !userLoggedIn && (
-        <span className="access-status-style">🔒</span>
+        <span className="access-status-style">
+          🔒<span className="tooltiptext">Login to unlock</span>
+        </span>
       )}
     </li>
   ));

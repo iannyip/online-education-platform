@@ -55,6 +55,42 @@ body {
   right: 0px;
 }
 
+.access-status-style .tooltiptext {
+  visibility: hidden;
+  font-size: 0.8rem;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  width: 100px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -70px; /* Use half of the width (120/2 = 60), to center the tooltip */
+
+  bottom: 100%; /* At the top of the tooltip */
+  left: 50%;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 10;
+}
+
+.access-status-style .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 70%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.access-status-style:hover .tooltiptext {
+  visibility: visible;
+}
+
 .modal-header-style {
   border-bottom: 0px none;
 }
