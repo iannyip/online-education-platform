@@ -14,14 +14,13 @@ export default function App() {
   const [lessonTitles, setlessonTitles] = useState({});
   const [loginShow, setLoginShow] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userId, setUserId] = useState("");
 
   const showLoginModal = () => {
-    console.log("enabling modal");
     setLoginShow(true);
   };
 
   const hideLoginModal = () => {
-    console.log("disabling modal");
     setLoginShow(false);
   };
 
@@ -30,16 +29,17 @@ export default function App() {
   };
 
   const loginReq = (name, password) => {
-    console.log("kkj");
-    console.log(`${name}, ${password}`);
     axios
       .post("/login", { name, password })
       .then((result) => {
         console.log(`Cookie: ${document.cookie.UserId}`);
+        console.log(result.data);
         if (result.data.message === "valid user") {
           setUserLoggedIn(true);
           setLoginShow(false);
+          setUserId(result.data.UserId);
         } else if (result.data.message === "invalid user") {
+          console.log("failed");
           setUserLoggedIn(false);
         }
       })
@@ -47,9 +47,6 @@ export default function App() {
   };
 
   useEffect(() => {
-    // get the first lesson
-    console.log("I should be running one time");
-
     setCurrentLessonNo(1);
     axios
       .get("/titleIndex")

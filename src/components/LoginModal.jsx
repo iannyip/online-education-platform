@@ -6,7 +6,6 @@ export default function LoginModal({ loginShow, onHide, loginReq }) {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    console.log("how many times do i run?");
     setUsername("");
     setPassword("");
   }, [loginShow]);
@@ -18,7 +17,6 @@ export default function LoginModal({ loginShow, onHide, loginReq }) {
     setPassword(event.target.value);
   };
 
-  console.log("inside modal");
   return (
     <Modal
       show={loginShow}

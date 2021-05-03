@@ -85,7 +85,7 @@ module.exports = {
       {
         title: "Arrays",
         task:
-          "Sometimes, we need to store more than one thing in a variable. Arrays allow you to store multiple things in one variable! Fill up the array with your favourite things!",
+          "Sometimes, we need to store more than one thing in a variable. Arrays allow you to store multiple things in one variable! Fill up the array with three of your favourite things!",
         template: "var myFavouriteThings = [];\n\nmyFavouriteThings;",
         test: "return answer.length == 3",
         created_at: new Date(),

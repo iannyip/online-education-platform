@@ -15,17 +15,8 @@ const testString = "= (input) => {console.log(input);}";
 const runCode = (codeString, functionName) => {
   try {
     let testFunc;
-    console.log("running code...");
-    console.log(`captured result: ${codeString}`);
-    // const testy = testFunc(5); // new Function(testString);
     const answer = eval(codeString);
-    console.log(`answer: ${answer}`);
     return answer;
-    // const testFuncs = testFunctions();
-    // console.log(`captured result: ${codeString}`);
-    // const outcome = testFuncs[`${functionName}`](codeString);
-    // console.log(`captured outcome: ${outcome}`);
-    // return outcome;
   } catch (error) {
     console.log(error);
     return error.message;
@@ -40,7 +31,6 @@ export default function CodeEditor({ currentLesson }) {
   const [rightOutcome, setRightOutcome] = useState(false);
 
   useEffect(() => {
-    console.log("the lesson has changed. changing template");
     setEditorVal(currentLesson.template);
     setOutput("");
     setWrongOutcome(false);
@@ -50,11 +40,9 @@ export default function CodeEditor({ currentLesson }) {
   const getCode = () => {
     const outcome = runCode(editorVal);
     setOutput(outcome);
-    console.log(`the correct answer is: ${currentLesson.test}`);
     const compareCorrect = new Function("answer", currentLesson.test);
 
     if (compareCorrect(outcome)) {
-      console.log("success!");
       setRightOutcome(true);
       setWrongOutcome(false);
     } else {
