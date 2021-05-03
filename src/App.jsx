@@ -35,9 +35,13 @@ export default function App() {
     axios
       .post("/login", { name, password })
       .then((result) => {
-        console.log("posted");
-        console.log(result);
-        setLoginShow(false);
+        console.log(`Cookie: ${document.cookie.UserId}`);
+        if (result.data.message === "valid user") {
+          setUserLoggedIn(true);
+          setLoginShow(false);
+        } else if (result.data.message === "invalid user") {
+          setUserLoggedIn(false);
+        }
       })
       .catch((error) => console.log(error));
   };
