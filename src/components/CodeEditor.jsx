@@ -30,15 +30,13 @@ const runCode = (codeString, functionName) => {
 
 // THE COMPONENT
 export default function CodeEditor({ currentLesson }) {
-  console.log("rendering!!");
-  console.log(currentLesson.template);
   const [editorVal, setEditorVal] = useState(currentLesson.template);
   const [output, setOutput] = useState(" ");
   const [wrongOutcome, setWrongOutcome] = useState(false);
   const [rightOutcome, setRightOutcome] = useState(false);
 
   useEffect(() => {
-    console.log("i'm running one time!");
+    console.log("the lesson has changed. changing template");
     setEditorVal(currentLesson.template);
   }, [currentLesson]);
 
