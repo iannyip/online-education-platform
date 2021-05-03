@@ -11,7 +11,7 @@ export default function LoginModal({ loginShow, onHide }) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      <Modal.Header className="modal-header-style my-0">
+      <Modal.Header className="modal-header-style pb-0">
         {/* <Modal.Title
           id="contained-modal-title-vcenter"
           className="lead text-center w-100"
@@ -26,9 +26,9 @@ export default function LoginModal({ loginShow, onHide }) {
           onClick={onHide}
         ></button>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="pt-0">
         <h4 className="lead text-center display-6 mb-4" href="#">
-          <b>[ ] B R I L L I A N</b>
+          <b>💡 B R I L L I A N</b>
         </h4>
         <p className="lead text-center my-0">welcome back</p>
         <input

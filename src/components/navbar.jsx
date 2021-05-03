@@ -6,7 +6,7 @@ export default function MainNav({ showLoginModal }) {
     <Navbar collapseOnSelect expand="md" bg="light" variant="light" fixed="top">
       <Container>
         <Navbar.Brand className="lead" href="#">
-          <b>[ ] B R I L L I A N</b>
+          <b> 💡 B R I L L I A N</b>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
