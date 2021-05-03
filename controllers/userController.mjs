@@ -9,8 +9,23 @@ export default function initUsersController(db) {
     }
   };
 
+  const login = async (request, response) => {
+    try {
+      console.log(request.body);
+      const authedUser = await db.User.findOne({ where: request.body });
+      if (authedUser !== null) {
+        response.send("valid user");
+      } else {
+        response.send("invalid user");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // RETURN
   return {
     index,
+    login,
   };
 }

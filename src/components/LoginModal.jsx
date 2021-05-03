@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-export default function LoginModal({ loginShow, onHide }) {
+export default function LoginModal({ loginShow, onHide, loginReq }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    console.log("how many times do i run?");
+    setUsername("");
+    setPassword("");
+  }, [loginShow]);
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
   console.log("inside modal");
   return (
     <Modal
@@ -35,15 +51,25 @@ export default function LoginModal({ loginShow, onHide }) {
           type="text"
           className="form-control my-3"
           placeholder="username"
+          value={username}
+          onChange={handleUsernameChange}
         ></input>
         <input
           type="password"
           className="form-control my-3"
           placeholder="password"
+          value={password}
+          onChange={handlePasswordChange}
         ></input>
       </Modal.Body>
       <Modal.Footer className="modal-footer-style">
-        <Button>Login</Button>
+        <Button
+          onClick={() => {
+            loginReq(username, password);
+          }}
+        >
+          Login
+        </Button>
       </Modal.Footer>
     </Modal>
   );

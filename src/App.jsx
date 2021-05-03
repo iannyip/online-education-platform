@@ -28,6 +28,19 @@ export default function App() {
     setCurrentLessonNo(newLessonNo);
   };
 
+  const loginReq = (name, password) => {
+    console.log("kkj");
+    console.log(`${name}, ${password}`);
+    axios
+      .post("/login", { name, password })
+      .then((result) => {
+        console.log("posted");
+        console.log(result);
+        setLoginShow(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
   useEffect(() => {
     // get the first lesson
     console.log("I should be running one time");
@@ -56,7 +69,11 @@ export default function App() {
   return (
     <div className="container pt-4">
       <MainNav showLoginModal={showLoginModal} />
-      <LoginModal loginShow={loginShow} onHide={hideLoginModal} />
+      <LoginModal
+        loginShow={loginShow}
+        onHide={hideLoginModal}
+        loginReq={loginReq}
+      />
       <div className="row mt-4">
         <div className="col-4 mt-4">
           <LeftMenu lessonTitles={lessonTitles} changeLesson={changeLesson} />

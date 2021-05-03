@@ -15,6 +15,8 @@ export default function routes(app) {
   app.get("/titleIndex", LessonController.index);
   app.get("/lessons/:id", LessonController.show);
 
+  app.post("/login", UserController.login);
+
   // special JS page. Include the webpack index.html file
   app.get("/home", (request, response) => {
     response.sendFile(resolve("dist", "main.html"));
