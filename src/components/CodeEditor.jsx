@@ -12,26 +12,40 @@ import testFunctions from "../tests.mjs";
 // HELPER FUNCTION
 const runCode = (codeString, functionName) => {
   try {
-    const testFuncs = testFunctions();
+    console.log("running code...");
     console.log(`captured result: ${codeString}`);
-    const outcome = testFuncs[`${functionName}`](codeString);
-    console.log(`captured outcome: ${outcome}`);
-    return outcome;
+    const answer = eval(codeString);
+    console.log(`answer: ${answer}`);
+    return answer;
+    // const testFuncs = testFunctions();
+    // console.log(`captured result: ${codeString}`);
+    // const outcome = testFuncs[`${functionName}`](codeString);
+    // console.log(`captured outcome: ${outcome}`);
+    // return outcome;
   } catch (error) {
     console.log(error);
+    return error.message;
   }
 };
 
 // THE COMPONENT
 export default function CodeEditor({ currentLesson }) {
+  console.log("rendering!!");
   console.log(currentLesson.template);
   const [editorVal, setEditorVal] = useState(currentLesson.template);
   const [output, setOutput] = useState(" ");
   const [wrongOutcome, setWrongOutcome] = useState(false);
   const [rightOutcome, setRightOutcome] = useState(false);
 
+  useEffect(() => {
+    console.log("i'm running one time!");
+    setEditorVal(currentLesson.template);
+  }, [currentLesson]);
+
   const getCode = () => {
     alert(editorVal);
+    const outcome = runCode(editorVal);
+    setOutput(outcome);
   };
 
   const handleOnBeforeChange = (editor, data, value) => {
