@@ -26,18 +26,20 @@ module.exports = {
 
     const lessonList = [
       {
-        title: "Console Logs",
-        task: "Print 'Hello World!'",
+        title: "Quick Maths",
+        task:
+          "In JavaScript, you can add two numbers together.\n In the console below, try inputting: 2 + 2",
         template: "",
-        test: "consolelog",
+        test: "4",
         created_at: new Date(),
         updated_at: new Date(),
       },
       {
-        title: "Comments",
-        task: "Use two slashes (/) to add a comment",
+        title: "Joining Strings",
+        task:
+          "You can also join strings together. \n In the console below, try: \n 'Hello' + ' World!'",
         template: "",
-        test: "comment",
+        test: "Hello World!",
         created_at: new Date(),
         updated_at: new Date(),
       },
