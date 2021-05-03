@@ -40,11 +40,19 @@ body {
 
 .left-menu-item {
   transition: 0.3s;
+  position: relative;
 }
 
 .left-menu-item:hover {
   cursor: pointer;
   opacity: 0.5;
+}
+
+.access-status-style {
+  position: absolute;
+  text-align: right;
+  margin-left: auto;
+  right: 0px;
 }
 
 .modal-header-style {

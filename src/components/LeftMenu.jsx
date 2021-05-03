@@ -16,6 +16,7 @@ export default function LeftMenu({ lessonTitles, changeLesson }) {
       }}
     >
       {lesson}
+      <span className="access-status-style">✔️</span>
     </li>
   ));
 
