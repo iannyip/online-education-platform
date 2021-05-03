@@ -88,7 +88,11 @@ export default function App() {
       <div className="row mt-4">
         <div className="col-4 mt-4">
           {lessonTitles && (
-            <LeftMenu LessonTitles={lessonTitles} changeLesson={changeLesson} />
+            <LeftMenu
+              LessonTitles={lessonTitles}
+              changeLesson={changeLesson}
+              userLoggedIn={userLoggedIn}
+            />
           )}
         </div>
         <div className="col-8 mt-4">

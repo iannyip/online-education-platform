@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function LeftMenu({ LessonTitles, changeLesson }) {
+export default function LeftMenu({ LessonTitles, changeLesson, userLoggedIn }) {
   const jsxLessonTitles = LessonTitles.map((lesson) => (
     <li
       key={lesson.id}
       className="left-menu-item"
-      onClick={() => {
-        changeLesson(lesson.id);
-      }}
+      onClick={
+        lesson.premium == 0 || userLoggedIn
+          ? () => {
+              changeLesson(lesson.id);
+            }
+          : undefined
+      }
     >
       {lesson.title}
       {/* {<span className="access-status-style">✔️</span>} */}
-      {lesson.premium === 1 && <span className="access-status-style">🔒</span>}
+      {lesson.premium === 1 && !userLoggedIn && (
+        <span className="access-status-style">🔒</span>
+      )}
     </li>
   ));
 
