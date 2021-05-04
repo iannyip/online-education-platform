@@ -4,17 +4,33 @@ import { Modal, Button } from "react-bootstrap";
 export default function NewUserModal({ newUserShow, onHide, createNewUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState("");
 
   useEffect(() => {
     setUsername("");
     setPassword("");
+    setPassword2("");
+    setPasswordMatch("");
   }, [newUserShow]);
+
+  useEffect(() => {
+    console.log(`comparing ${password} with ${password2}`);
+    if (password === password2) {
+      setPasswordMatch(true);
+    } else {
+      setPasswordMatch(false);
+    }
+  }, [password2]);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
   };
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+  const handlePassword2Change = (event) => {
+    setPassword2(event.target.value);
   };
 
   return (
@@ -34,11 +50,14 @@ export default function NewUserModal({ newUserShow, onHide, createNewUser }) {
           onClick={onHide}
         ></button>
       </Modal.Header>
-      <Modal.Body className="pt-0">
+      <Modal.Body className="py-0">
         <h4 className="lead text-center display-6 mb-4" href="#">
-          <b>💡 B R I L L I A N</b>
+          🙌 create account 🙌
         </h4>
-        <p className="lead text-center my-0">Your first step to 300 IQ</p>
+        <p className="lead text-center my-0">
+          Congratulations 🎉 on 👏 taking 🎉 your 👏 first 🎉 step 👏 to 🎉 300
+          👏 IQ
+        </p>
         <input
           type="text"
           className="form-control my-3"
@@ -53,11 +72,30 @@ export default function NewUserModal({ newUserShow, onHide, createNewUser }) {
           value={password}
           onChange={handlePasswordChange}
         ></input>
+        <input
+          type="password"
+          className="form-control my-3"
+          placeholder="enter your password again"
+          value={password2}
+          onChange={handlePassword2Change}
+        ></input>
+        {!passwordMatch && password2 && (
+          <div className="alert alert-danger py-2 text-center" role="alert">
+            Passwords do not match!
+          </div>
+        )}
+        {passwordMatch && password2 && (
+          <div className="alert alert-success py-2 text-center" role="alert">
+            Passwords match!
+          </div>
+        )}
       </Modal.Body>
       <Modal.Footer className="modal-footer-style">
         <Button
           onClick={() => {
-            createNewUser(username, password);
+            if (passwordMatch) {
+              createNewUser(username, password);
+            }
           }}
         >
           Register
