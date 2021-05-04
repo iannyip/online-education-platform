@@ -24,6 +24,7 @@ export default function CodeEditor({
   updateProgress,
   userLoggedIn,
   userSubmittedCode,
+  changeLesson,
 }) {
   const [editorVal, setEditorVal] = useState(currentLesson.template);
   const [output, setOutput] = useState(" ");
@@ -86,7 +87,22 @@ export default function CodeEditor({
             {rightOutcome && "Great job!"}
           </div>
         )}
-        <button onClick={getCode} className="mx-2 btn btn-success mt-2">
+        {rightOutcome && (
+          <button
+            type="button"
+            onClick={() => {
+              changeLesson(Number(currentLesson.id) + 1);
+            }}
+            className="mx-2 btn btn-primary mt-2"
+          >
+            Next
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={getCode}
+          className="mx-2 btn btn-success mt-2"
+        >
           Run!
         </button>
       </div>

@@ -216,6 +216,7 @@ export default function App() {
                   updateProgress={updateProgress}
                   userLoggedIn={userLoggedIn}
                   userSubmittedCode={userSubmittedCode}
+                  changeLesson={changeLesson}
                 />
               )}
             </div>
