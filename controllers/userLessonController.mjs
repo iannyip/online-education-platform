@@ -45,7 +45,6 @@ export default function initUserLessonsController(db) {
           lessonId: request.body.currentLessonNo,
           savedCode: request.body.editorValue,
         });
-        console.log(submission);
         response.sendStatus(200);
       }
     } catch (error) {
@@ -55,11 +54,14 @@ export default function initUserLessonsController(db) {
 
   const show = async (request, response) => {
     try {
-      const lessonId = request.params.id;
-      console.log(`lessonId: ${lessonId}`);
-      const lesson = await db.Lesson.findOne({ where: { id: lessonId } });
-      console.log(lesson);
-      response.send(lesson);
+      const prevAttempt = await db.UserLesson.findOne({
+        where: request.params,
+      });
+      if (prevAttempt !== null) {
+        response.send(prevAttempt.savedCode);
+      } else {
+        response.send(200);
+      }
     } catch (error) {
       console.log(error);
     }

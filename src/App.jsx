@@ -14,6 +14,7 @@ export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
   const [currentLesson, setCurrentLesson] = useState();
   const [lessonTitles, setlessonTitles] = useState([]);
+  const [userSubmittedCode, setUserSubmittedCode] = useState("");
 
   const [view, setView] = useState("home");
 
@@ -41,6 +42,23 @@ export default function App() {
         setCurrentLesson(result.data);
       })
       .catch((error) => console.log(error));
+  }, [currentLessonNo]);
+
+  useEffect(() => {
+    // If the user is logged in
+    if (userLoggedIn) {
+      axios
+        .get(`/pastsubmission/${userId}/${currentLessonNo}`)
+        .then((result) => {
+          if (result.data !== "OK") {
+            console.log(result.data);
+            setUserSubmittedCode(result.data);
+          } else {
+            setUserSubmittedCode("");
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   }, [currentLessonNo]);
 
   const changeView = (nextView) => {
@@ -197,6 +215,7 @@ export default function App() {
                   currentLesson={currentLesson}
                   updateProgress={updateProgress}
                   userLoggedIn={userLoggedIn}
+                  userSubmittedCode={userSubmittedCode}
                 />
               )}
             </div>

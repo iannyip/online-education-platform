@@ -23,6 +23,7 @@ export default function CodeEditor({
   currentLesson,
   updateProgress,
   userLoggedIn,
+  userSubmittedCode,
 }) {
   const [editorVal, setEditorVal] = useState(currentLesson.template);
   const [output, setOutput] = useState(" ");
@@ -34,7 +35,15 @@ export default function CodeEditor({
     setOutput("");
     setWrongOutcome(false);
     setRightOutcome(false);
-  }, [currentLesson]);
+    console.log("------ CHECKING ------");
+    console.log(
+      `Logged in: ${userLoggedIn} and lesson: ${currentLesson} and code: ${userSubmittedCode}`
+    );
+    if (userLoggedIn && userSubmittedCode) {
+      console.log("user has done this before");
+      setEditorVal(userSubmittedCode);
+    }
+  }, [currentLesson, userSubmittedCode]);
 
   const getCode = () => {
     const outcome = runCode(editorVal);

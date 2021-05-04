@@ -22,6 +22,7 @@ export default function routes(app) {
 
   app.post("/attempts", UserLessonController.create);
   app.get("/progress/:userId", UserLessonController.index);
+  app.get("/pastsubmission/:userId/:lessonId", UserLessonController.show);
 
   // special JS page. Include the webpack index.html file
   app.get("/home", (request, response) => {
