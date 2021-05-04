@@ -17,7 +17,7 @@ export default function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
   const [userCompleted, setUserCompleted] = useState([]);
-  const [view, setView] = useState("lesson");
+  const [view, setView] = useState("learn");
 
   useEffect(() => {
     setCurrentLessonNo(1);
@@ -132,7 +132,7 @@ export default function App() {
           <HomePage />
         </div>
       )}
-      {view === "lesson" && (
+      {view === "learn" && (
         <div className="row mt-4">
           <div className="col-4 mt-4">
             {lessonTitles && (

@@ -21,7 +21,7 @@ export default function MainNav({
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav> */}
           <Nav className="ms-auto">
-            {view === "lesson" && (
+            {view === "learn" && (
               <Nav.Link
                 href="#"
                 className="mx-4 fw-light"
@@ -37,7 +37,7 @@ export default function MainNav({
                 href="#"
                 className="mx-4 fw-light"
                 onClick={() => {
-                  changeView("lesson");
+                  changeView("learn");
                 }}
               >
                 L E A R N
