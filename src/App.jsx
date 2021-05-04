@@ -17,7 +17,7 @@ export default function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
   const [userCompleted, setUserCompleted] = useState([]);
-  const [view, setView] = useState("learn");
+  const [view, setView] = useState("home");
 
   useEffect(() => {
     setCurrentLessonNo(1);

@@ -1,5 +1,4 @@
 import React from "react";
-// import javascript_logo from "../../public/javascript_logo.png";
 
 export default function HomePage() {
   console.log("rendering home page");
@@ -23,7 +22,6 @@ export default function HomePage() {
             alt="progress"
             className="w-50"
           />
-          {/* <img src={javascript_logo} alt="javascript logo" /> */}
         </div>
       </div>
       <hr className="home-view-lines" />
@@ -58,11 +56,10 @@ export default function HomePage() {
           </button>
         </div>
         <div className="col-6">
-          {/* <div style={(background-image = url("images/rocket_gif.gif")}></div> */}
           <img
             src="images/rocket_gif.gif"
             alt="javascript logo"
-            className="w-50 rocket-style"
+            className="rocket-style"
           />
         </div>
       </div>
