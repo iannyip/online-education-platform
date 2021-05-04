@@ -127,37 +127,47 @@ export default function App() {
         onHide={hideLoginModal}
         loginReq={loginReq}
       />
-      <div className="row mt-4">
-        <div className="col-4 mt-4">
-          {lessonTitles && (
-            <LeftMenu
-              LessonTitles={lessonTitles}
-              changeLesson={changeLesson}
-              userLoggedIn={userLoggedIn}
-              userCompleted={userCompleted}
-            />
-          )}
+      {view === "home" && (
+        <div className="row mt-4">
+          <HomePage />
         </div>
-        <div className="col-8 mt-4">
-          <div className="row lesson-content">
-            {currentLesson && (
-              <LessonTitle className="col-12" currentLesson={currentLesson} />
-            )}
-            {currentLesson && (
-              <LessonDetail className="col-12" currentLesson={currentLesson} />
-            )}
-          </div>
-          <div className="row editor-style">
-            {currentLesson && (
-              <CodeEditor
-                currentLesson={currentLesson}
-                updateProgress={updateProgress}
+      )}
+      {view === "lesson" && (
+        <div className="row mt-4">
+          <div className="col-4 mt-4">
+            {lessonTitles && (
+              <LeftMenu
+                LessonTitles={lessonTitles}
+                changeLesson={changeLesson}
                 userLoggedIn={userLoggedIn}
+                userCompleted={userCompleted}
               />
             )}
           </div>
+          <div className="col-8 mt-4">
+            <div className="row lesson-content">
+              {currentLesson && (
+                <LessonTitle className="col-12" currentLesson={currentLesson} />
+              )}
+              {currentLesson && (
+                <LessonDetail
+                  className="col-12"
+                  currentLesson={currentLesson}
+                />
+              )}
+            </div>
+            <div className="row editor-style">
+              {currentLesson && (
+                <CodeEditor
+                  currentLesson={currentLesson}
+                  updateProgress={updateProgress}
+                  userLoggedIn={userLoggedIn}
+                />
+              )}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
