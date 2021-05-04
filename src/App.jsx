@@ -17,7 +17,7 @@ export default function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
   const [userCompleted, setUserCompleted] = useState([]);
-  const [view, setView] = useState("home");
+  const [view, setView] = useState("lesson");
 
   useEffect(() => {
     setCurrentLessonNo(1);
@@ -38,6 +38,10 @@ export default function App() {
       })
       .catch((error) => console.log(error));
   }, [currentLessonNo]);
+
+  const changeView = (nextView) => {
+    setView(nextView);
+  };
 
   const showLoginModal = () => {
     setLoginShow(true);
@@ -116,6 +120,7 @@ export default function App() {
         userLoggedIn={userLoggedIn}
         logUserOut={logUserOut}
         view={view}
+        changeView={changeView}
       />
       <LoginModal
         loginShow={loginShow}

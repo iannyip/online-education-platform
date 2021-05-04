@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 
-export default function MainNav({ showLoginModal, userLoggedIn, logUserOut }) {
+export default function MainNav({
+  showLoginModal,
+  userLoggedIn,
+  logUserOut,
+  view,
+  changeView,
+}) {
   return (
     <Navbar collapseOnSelect expand="md" bg="light" variant="light" fixed="top">
       <Container>
@@ -15,9 +21,28 @@ export default function MainNav({ showLoginModal, userLoggedIn, logUserOut }) {
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav> */}
           <Nav className="ms-auto">
-            <Nav.Link href="#login" className="mx-4 fw-light">
-              H O M E
-            </Nav.Link>
+            {view === "lesson" && (
+              <Nav.Link
+                href="#"
+                className="mx-4 fw-light"
+                onClick={() => {
+                  changeView("home");
+                }}
+              >
+                H O M E
+              </Nav.Link>
+            )}
+            {view === "home" && (
+              <Nav.Link
+                href="#"
+                className="mx-4 fw-light"
+                onClick={() => {
+                  changeView("lesson");
+                }}
+              >
+                L E A R N
+              </Nav.Link>
+            )}
             {!userLoggedIn && (
               <Nav.Link
                 href="#login"
