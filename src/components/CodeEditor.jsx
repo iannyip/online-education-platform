@@ -35,12 +35,7 @@ export default function CodeEditor({
     setOutput("");
     setWrongOutcome(false);
     setRightOutcome(false);
-    console.log("------ CHECKING ------");
-    console.log(
-      `Logged in: ${userLoggedIn} and lesson: ${currentLesson} and code: ${userSubmittedCode}`
-    );
     if (userLoggedIn && userSubmittedCode) {
-      console.log("user has done this before");
       setEditorVal(userSubmittedCode);
     }
   }, [currentLesson, userSubmittedCode]);
