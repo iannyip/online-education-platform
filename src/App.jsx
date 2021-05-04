@@ -100,6 +100,7 @@ export default function App() {
       .post("/attempts", { editorValue, userId, currentLessonNo })
       .then((result) => {
         console.log(result.data);
+        getUserProgress();
       })
       .catch((error) => {
         console.log(error);
