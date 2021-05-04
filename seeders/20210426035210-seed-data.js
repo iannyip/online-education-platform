@@ -4,6 +4,12 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const userList = [
       {
+        name: "admin",
+        password: "adminpassword",
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
         name: "yettie",
         password: "nsMAC8cgG",
         created_at: new Date(),
