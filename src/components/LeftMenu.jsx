@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function LeftMenu({ LessonTitles, changeLesson, userLoggedIn }) {
+export default function LeftMenu({
+  LessonTitles,
+  changeLesson,
+  userLoggedIn,
+  userCompleted,
+}) {
   const jsxLessonTitles = LessonTitles.map((lesson) => (
     <li
       key={lesson.id}
@@ -15,7 +20,9 @@ export default function LeftMenu({ LessonTitles, changeLesson, userLoggedIn }) {
       }
     >
       {lesson.title}
-      {/* {<span className="access-status-style">✔️</span>} */}
+      {userCompleted && userCompleted.includes(lesson.id) && (
+        <span className="access-status-style">✔️</span>
+      )}
       {lesson.premium === 1 && !userLoggedIn && (
         <span className="access-status-style">
           🔒<span className="tooltiptext">Login to unlock</span>
