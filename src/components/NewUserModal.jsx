@@ -15,7 +15,6 @@ export default function NewUserModal({ newUserShow, onHide, createNewUser }) {
   }, [newUserShow]);
 
   useEffect(() => {
-    console.log(`comparing ${password} with ${password2}`);
     if (password === password2) {
       setPasswordMatch(true);
     } else {

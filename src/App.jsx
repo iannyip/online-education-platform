@@ -51,7 +51,6 @@ export default function App() {
         .get(`/pastsubmission/${userId}/${currentLessonNo}`)
         .then((result) => {
           if (result.data !== "OK") {
-            console.log(result.data);
             setUserSubmittedCode(result.data);
           } else {
             setUserSubmittedCode("");
@@ -74,7 +73,6 @@ export default function App() {
   };
 
   const logUserOut = () => {
-    console.log("logging out...");
     setUserLoggedIn(false);
     setUserCompleted([]);
     setUserId("");
@@ -106,7 +104,6 @@ export default function App() {
   };
 
   const getUserProgress = () => {
-    console.log(`retrieving user progress...${userId}`);
     axios
       .get(`/progress/${userId}`)
       .then((result) => {
@@ -118,9 +115,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    console.log("userId changed");
     if (userId !== "") {
-      console.log(`userId updated to ${userId}`);
       getUserProgress();
     }
   }, [userId]);
@@ -129,14 +124,11 @@ export default function App() {
     axios
       .post("/login", { name, password })
       .then((result) => {
-        console.log(`Cookie: ${document.cookie.UserId}`);
-        console.log(result.data);
         if (result.data.message === "valid user") {
           setUserLoggedIn(true);
           setLoginShow(false);
           setUserId(result.data.UserId);
         } else if (result.data.message === "invalid user") {
-          console.log("failed");
           setUserLoggedIn(false);
         }
       })
@@ -144,11 +136,9 @@ export default function App() {
   };
 
   const updateProgress = (editorValue) => {
-    console.log("about to post");
     axios
       .post("/attempts", { editorValue, userId, currentLessonNo })
       .then((result) => {
-        console.log(result.data);
         getUserProgress();
       })
       .catch((error) => {

@@ -5,7 +5,6 @@ export default function HomePage({
   showLoginModal,
   showNewUserModal,
 }) {
-  console.log("rendering home page");
   return (
     <div className="container mt-4">
       {/* SECTION 1 */}
