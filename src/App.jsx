@@ -168,7 +168,7 @@ export default function App() {
         </div>
       )}
       {view === "learn" && (
-        <div className="row mt-4">
+        <div className="row mt-3">
           <div className="col-4 mt-4">
             {lessonTitles && (
               <LeftMenu
