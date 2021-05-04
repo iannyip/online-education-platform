@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function HomePage({ changeView }) {
+export default function HomePage({ changeView, showLoginModal }) {
   console.log("rendering home page");
   return (
     <div className="container mt-4">
@@ -45,7 +45,12 @@ export default function HomePage({ changeView }) {
           <h1 className="display-5 mb-4">Track your progress</h1>
           <p className="my-0 lead">Come back to where you left off</p>
           <p className="my-0 lead">Tracked progress is effective learning</p>
-          <button className="btn btn-outline-secondary mt-4">Login</button>
+          <button
+            className="btn btn-outline-secondary mt-4"
+            onClick={() => showLoginModal()}
+          >
+            Login
+          </button>
         </div>
       </div>
       <hr className="home-view-lines" />
