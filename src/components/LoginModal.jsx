@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
-export default function LoginModal({ loginShow, onHide, loginReq }) {
+export default function LoginModal({
+  loginShow,
+  onHide,
+  loginReq,
+  showNewUserModal,
+}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -40,7 +45,7 @@ export default function LoginModal({ loginShow, onHide, loginReq }) {
           onClick={onHide}
         ></button>
       </Modal.Header>
-      <Modal.Body className="pt-0">
+      <Modal.Body className="py-0">
         <h4 className="lead text-center display-6 mb-4" href="#">
           <b>💡 B R I L L I A N</b>
         </h4>
@@ -61,13 +66,28 @@ export default function LoginModal({ loginShow, onHide, loginReq }) {
         ></input>
       </Modal.Body>
       <Modal.Footer className="modal-footer-style">
-        <Button
-          onClick={() => {
-            loginReq(username, password);
-          }}
-        >
-          Login
-        </Button>
+        <div className="col-12">
+          <Button
+            onClick={() => {
+              loginReq(username, password);
+            }}
+          >
+            Login
+          </Button>
+        </div>
+
+        <p className="text-center my-1">
+          <a
+            href="#"
+            className="disclaimer-row"
+            onClick={() => {
+              onHide();
+              showNewUserModal();
+            }}
+          >
+            New? Create an account
+          </a>
+        </p>
       </Modal.Footer>
     </Modal>
   );

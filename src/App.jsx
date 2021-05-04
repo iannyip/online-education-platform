@@ -151,6 +151,7 @@ export default function App() {
         loginShow={loginShow}
         onHide={hideLoginModal}
         loginReq={loginReq}
+        showNewUserModal={showNewUserModal}
       />
       <NewUserModal
         newUserShow={newUserShow}
