@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function HomePage() {
+export default function HomePage({ changeView }) {
   console.log("rendering home page");
   return (
     <div className="container mt-4">
@@ -12,7 +12,12 @@ export default function HomePage() {
           <p className="my-0 lead">Start from the basics</p>
           <p className="my-0 lead">Learn by doing</p>
           <p className="my-0 lead">Tons of fun</p>
-          <button className="btn btn-outline-secondary mt-4">
+          <button
+            className="btn btn-outline-secondary mt-4"
+            onClick={() => {
+              changeView("learn");
+            }}
+          >
             Get Started
           </button>
         </div>

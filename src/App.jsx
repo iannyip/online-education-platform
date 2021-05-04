@@ -129,7 +129,7 @@ export default function App() {
       />
       {view === "home" && (
         <div className="row mt-4">
-          <HomePage />
+          <HomePage changeView={changeView} />
         </div>
       )}
       {view === "learn" && (
