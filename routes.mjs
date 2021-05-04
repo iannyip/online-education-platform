@@ -20,6 +20,7 @@ export default function routes(app) {
   app.post("/login", UserController.login);
 
   app.post("/attempts", UserLessonController.create);
+  app.get("/progress/:userId", UserLessonController.index);
 
   // special JS page. Include the webpack index.html file
   app.get("/home", (request, response) => {

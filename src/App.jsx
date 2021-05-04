@@ -15,6 +15,7 @@ export default function App() {
   const [loginShow, setLoginShow] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
+  const [userCompleted, setUserCompleted] = useState([]);
 
   useEffect(() => {
     setCurrentLessonNo(1);
@@ -47,12 +48,33 @@ export default function App() {
   const logUserOut = () => {
     console.log("logging out...");
     setUserLoggedIn(false);
+    setUserCompleted([]);
     setUserId("");
   };
 
   const changeLesson = (newLessonNo) => {
     setCurrentLessonNo(newLessonNo);
   };
+
+  const getUserProgress = () => {
+    console.log(`retrieving user progress...${userId}`);
+    axios
+      .get(`/progress/${userId}`)
+      .then((result) => {
+        setUserCompleted(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    console.log("userId changed");
+    if (userId !== "") {
+      console.log(`userId updated to ${userId}`);
+      getUserProgress();
+    }
+  }, [userId]);
 
   const loginReq = (name, password) => {
     axios
@@ -103,6 +125,7 @@ export default function App() {
               LessonTitles={lessonTitles}
               changeLesson={changeLesson}
               userLoggedIn={userLoggedIn}
+              userCompleted={userCompleted}
             />
           )}
         </div>

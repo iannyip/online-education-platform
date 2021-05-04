@@ -1,8 +1,18 @@
 export default function initUserLessonsController(db) {
   const index = async (request, response) => {
     try {
-      const attempts = await db.UserLesson.findAll();
-      response.send(attempts);
+      const { userId } = request.params;
+      const attempts = await db.UserLesson.findAll({
+        where: {
+          userId,
+        },
+        attributes: ["lessonId"],
+      });
+      const attemptArray = [];
+      attempts.forEach((item) => {
+        attemptArray.push(item.lessonId);
+      });
+      response.send(attemptArray);
     } catch (error) {
       console.log(error);
     }
