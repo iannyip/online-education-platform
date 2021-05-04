@@ -78,12 +78,12 @@ export default function CodeEditor({
       />
       <div className="d-flex justify-content-md-end py-2">
         {wrongOutcome && (
-          <div className="my-0 alert alert-danger w-100">
+          <div className="my-0 py-2 alert alert-danger w-100">
             {wrongOutcome && "Try Again!"}
           </div>
         )}
         {rightOutcome && (
-          <div className="my-0 alert alert-success w-100">
+          <div className="my-0 py-2 alert alert-success w-100">
             {rightOutcome && "Great job!"}
           </div>
         )}
@@ -93,7 +93,7 @@ export default function CodeEditor({
             onClick={() => {
               changeLesson(Number(currentLesson.id) + 1);
             }}
-            className="mx-2 btn btn-primary mt-2"
+            className="mx-2 px-4 btn btn-primary"
           >
             Next
           </button>
@@ -101,7 +101,7 @@ export default function CodeEditor({
         <button
           type="button"
           onClick={getCode}
-          className="mx-2 btn btn-success mt-2"
+          className="mx-2 px-4 btn btn-success "
         >
           Run!
         </button>
