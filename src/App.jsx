@@ -7,6 +7,7 @@ import LessonDetail from "./components/LessonDetail.jsx";
 import CodeEditor from "./components/CodeEditor.jsx";
 import MainNav from "./components/navbar.jsx";
 import LoginModal from "./components/LoginModal.jsx";
+import HomePage from "./components/HomePage.jsx";
 
 export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
