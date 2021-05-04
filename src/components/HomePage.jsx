@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function HomePage({ changeView, showLoginModal }) {
+export default function HomePage({
+  changeView,
+  showLoginModal,
+  showNewUserModal,
+}) {
   console.log("rendering home page");
   return (
     <div className="container mt-4">
@@ -61,7 +65,10 @@ export default function HomePage({ changeView, showLoginModal }) {
         <div className="col-6">
           <h1 className="display-5 mb-4">Ready to start learning?</h1>
           <p className="my-0 lead">Unlock your full learning potential</p>
-          <button className="btn btn-outline-secondary mt-4">
+          <button
+            className="btn btn-outline-secondary mt-4"
+            onClick={showNewUserModal}
+          >
             Sign up today
           </button>
         </div>

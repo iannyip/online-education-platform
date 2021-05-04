@@ -18,6 +18,7 @@ export default function routes(app) {
 
   app.get("/test", UserController["index"]);
   app.post("/login", UserController.login);
+  app.post("/register", UserController.createUser);
 
   app.post("/attempts", UserLessonController.create);
   app.get("/progress/:userId", UserLessonController.index);

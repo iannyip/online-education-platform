@@ -24,9 +24,21 @@ export default function initUsersController(db) {
     }
   };
 
+  const createUser = async (request, response) => {
+    try {
+      console.log("about to create new user");
+      console.log(request.body);
+      const newUser = await db.User.create(request.body);
+      response.send({ UserId: newUser.id });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // RETURN
   return {
     index,
     login,
+    createUser,
   };
 }

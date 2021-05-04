@@ -74,7 +74,9 @@ export default function App() {
     axios
       .post("/register", { name, password })
       .then((result) => {
-        console.log(result.data);
+        setNewUserShow(false);
+        setUserLoggedIn(true);
+        setUserId(result.data.UserId);
       })
       .catch((error) => {
         console.log(error);
