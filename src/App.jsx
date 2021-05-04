@@ -8,16 +8,20 @@ import CodeEditor from "./components/CodeEditor.jsx";
 import MainNav from "./components/navbar.jsx";
 import LoginModal from "./components/LoginModal.jsx";
 import HomePage from "./components/HomePage.jsx";
+import NewUserModal from "./components/NewUserModal.jsx";
 
 export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
   const [currentLesson, setCurrentLesson] = useState();
   const [lessonTitles, setlessonTitles] = useState([]);
+
+  const [view, setView] = useState("home");
+
   const [loginShow, setLoginShow] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [userId, setUserId] = useState("");
   const [userCompleted, setUserCompleted] = useState([]);
-  const [view, setView] = useState("home");
+  const [newUserShow, setNewUserShow] = useState(false);
 
   useEffect(() => {
     setCurrentLessonNo(1);
@@ -56,6 +60,25 @@ export default function App() {
     setUserLoggedIn(false);
     setUserCompleted([]);
     setUserId("");
+  };
+
+  const showNewUserModal = () => {
+    setNewUserShow(true);
+  };
+
+  const hideNewUserModal = () => {
+    setNewUserShow(false);
+  };
+
+  const createNewUser = (name, password) => {
+    axios
+      .post("/register", { name, password })
+      .then((result) => {
+        console.log(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const changeLesson = (newLessonNo) => {
@@ -127,9 +150,18 @@ export default function App() {
         onHide={hideLoginModal}
         loginReq={loginReq}
       />
+      <NewUserModal
+        newUserShow={newUserShow}
+        onHide={hideNewUserModal}
+        createNewUser={createNewUser}
+      />
       {view === "home" && (
         <div className="row mt-4">
-          <HomePage changeView={changeView} showLoginModal={showLoginModal} />
+          <HomePage
+            changeView={changeView}
+            showLoginModal={showLoginModal}
+            showNewUserModal={showNewUserModal}
+          />
         </div>
       )}
       {view === "learn" && (
