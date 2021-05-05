@@ -4,99 +4,72 @@ import { PricingTable, PricingSlot, PricingDetail } from "react-pricing-table";
 export default function Pricing() {
   console.log("Wow admin is here");
   return (
-    <div className="row">
-      <PricingTable highlightColor="#1976D2">
+    <div className="row mt-4">
+      <div className="col-12 d-flex justify-content-center">
+        <img
+          src="images/javascript-on-off.gif"
+          className="js-gif-style"
+          alt=""
+        />
+      </div>
+      <PricingTable highlightColor="#4b5b63">
+        {/* Option 1 */}
         <PricingSlot
           // onClick={this.submit}
-          buttonText="TRY IT FREE"
+          buttonText="GET STARTED"
           title="FREE"
           priceText="$0/month"
         >
           <PricingDetail>
-            {" "}
-            <b>15</b> projects
+            <b>Limited</b> Access
           </PricingDetail>
           <PricingDetail>
-            {" "}
-            <b>5 GB</b> storage
-          </PricingDetail>
-          <PricingDetail>
-            {" "}
-            <b>5</b> users
+            <b>Untracked</b> Progress
           </PricingDetail>
           <PricingDetail strikethrough>
             {" "}
-            <b>Time tracking</b>
+            <b>One-on-one</b> coaching
           </PricingDetail>
         </PricingSlot>
+
+        {/* Option 2 */}
         <PricingSlot
           highlighted
           // onClick={this.submit}
           buttonText="SIGN UP"
-          title="BASIC"
-          priceText="$24/month"
+          title="MONTHLY"
+          priceText="$25/month"
         >
           <PricingDetail>
-            {" "}
-            <b>35</b> projects
+            <b>Unlimited</b> Access
           </PricingDetail>
           <PricingDetail>
             {" "}
-            <b>15 GB</b> storage
+            <b>Tracked</b> Progress
           </PricingDetail>
           <PricingDetail>
             {" "}
-            <b>Unlimited</b> users
-          </PricingDetail>
-          <PricingDetail>
-            {" "}
-            <b>Time tracking</b>
+            <b>Masterclass</b> with Jit Corn
           </PricingDetail>
         </PricingSlot>
+
+        {/* Option 3 */}
         <PricingSlot
           // onClick={this.submit}
           buttonText="SIGN UP"
-          title="PROFESSIONAL"
-          priceText="$99/month"
+          title="ANNUAL"
+          priceText="$300/year"
         >
           <PricingDetail>
-            {" "}
-            <b>100</b> projects
+            <b>Unlimited</b> Access
           </PricingDetail>
           <PricingDetail>
             {" "}
-            <b>30 GB</b> storage
+            <b>Tracked</b> Progress
           </PricingDetail>
           <PricingDetail>
             {" "}
-            <b>Unlimited</b> users
-          </PricingDetail>
-          <PricingDetail>
-            {" "}
-            <b>Time tracking</b>
-          </PricingDetail>
-        </PricingSlot>
-        <PricingSlot
-          // onClick={this.submit}
-          buttonText="SIGN UP"
-          title="ENTERPRISE"
-          priceText="$200/month"
-        >
-          <PricingDetail>
-            {" "}
-            <b>Unlimited</b> projects
-          </PricingDetail>
-          <PricingDetail>
-            {" "}
-            <b>75 GB</b> storage
-          </PricingDetail>
-          <PricingDetail>
-            {" "}
-            <b>Unlimited</b> users
-          </PricingDetail>
-          <PricingDetail>
-            {" "}
-            <b>Time tracking</b>
+            Intern at <b>Rocket Academy</b>
           </PricingDetail>
         </PricingSlot>
       </PricingTable>
