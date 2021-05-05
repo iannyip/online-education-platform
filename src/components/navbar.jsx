@@ -27,7 +27,7 @@ export default function MainNav({
                 href="#"
                 className="mx-4 fw-light"
                 onClick={() => {
-                  changeView("home");
+                  changeView("admin");
                 }}
               >
                 A D M I N
@@ -44,7 +44,7 @@ export default function MainNav({
                 H O M E
               </Nav.Link>
             )}
-            {view === "home" && (
+            {(view === "home" || view === "admin") && (
               <Nav.Link
                 href="#"
                 className="mx-4 fw-light"

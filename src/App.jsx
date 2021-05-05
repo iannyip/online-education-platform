@@ -9,6 +9,7 @@ import MainNav from "./components/navbar.jsx";
 import LoginModal from "./components/LoginModal.jsx";
 import HomePage from "./components/HomePage.jsx";
 import NewUserModal from "./components/NewUserModal.jsx";
+import AdminDashboard from "./components/AdminDashboard.jsx";
 
 export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
@@ -78,6 +79,7 @@ export default function App() {
     setUserCompleted([]);
     setUserId("");
     setIsAdmin(false);
+    setView("home");
   };
 
   const showNewUserModal = () => {
@@ -172,6 +174,7 @@ export default function App() {
         onHide={hideNewUserModal}
         createNewUser={createNewUser}
       />
+      {view === "admin" && <AdminDashboard />}
       {view === "home" && (
         <div className="row mt-4">
           <HomePage
