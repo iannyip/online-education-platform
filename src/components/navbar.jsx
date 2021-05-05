@@ -7,6 +7,7 @@ export default function MainNav({
   logUserOut,
   view,
   changeView,
+  isAdmin,
 }) {
   return (
     <Navbar collapseOnSelect expand="md" bg="light" variant="light" fixed="top">
@@ -21,6 +22,17 @@ export default function MainNav({
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav> */}
           <Nav className="ms-auto">
+            {isAdmin && (
+              <Nav.Link
+                href="#"
+                className="mx-4 fw-light"
+                onClick={() => {
+                  changeView("home");
+                }}
+              >
+                A D M I N
+              </Nav.Link>
+            )}
             {view === "learn" && (
               <Nav.Link
                 href="#"

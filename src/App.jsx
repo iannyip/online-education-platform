@@ -159,6 +159,7 @@ export default function App() {
         logUserOut={logUserOut}
         view={view}
         changeView={changeView}
+        isAdmin={isAdmin}
       />
       <LoginModal
         loginShow={loginShow}
