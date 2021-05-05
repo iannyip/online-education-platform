@@ -33,7 +33,7 @@ export default function MainNav({
                 A D M I N
               </Nav.Link>
             )}
-            {view === "learn" && (
+            {view !== "home" && (
               <Nav.Link
                 href="#"
                 className="mx-4 fw-light"
@@ -44,7 +44,7 @@ export default function MainNav({
                 H O M E
               </Nav.Link>
             )}
-            {(view === "home" || view === "admin") && (
+            {view !== "learn" && (
               <Nav.Link
                 href="#"
                 className="mx-4 fw-light"
@@ -55,6 +55,15 @@ export default function MainNav({
                 L E A R N
               </Nav.Link>
             )}
+            <Nav.Link
+              href="#"
+              className="mx-4 fw-light"
+              onClick={() => {
+                changeView("pricing");
+              }}
+            >
+              P R I C I N G
+            </Nav.Link>
             {!userLoggedIn && (
               <Nav.Link
                 href="#login"

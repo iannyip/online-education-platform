@@ -10,6 +10,7 @@ import LoginModal from "./components/LoginModal.jsx";
 import HomePage from "./components/HomePage.jsx";
 import NewUserModal from "./components/NewUserModal.jsx";
 import AdminDashboard from "./components/AdminDashboard.jsx";
+import Pricing from "./components/Pricing.jsx";
 
 export default function App() {
   const [currentLessonNo, setCurrentLessonNo] = useState(1);
@@ -182,6 +183,11 @@ export default function App() {
             showLoginModal={showLoginModal}
             showNewUserModal={showNewUserModal}
           />
+        </div>
+      )}
+      {view === "pricing" && (
+        <div className="row mt-4">
+          <Pricing />
         </div>
       )}
       {view === "learn" && (
