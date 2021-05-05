@@ -23,6 +23,7 @@ export default function App() {
   const [userId, setUserId] = useState("");
   const [userCompleted, setUserCompleted] = useState([]);
   const [newUserShow, setNewUserShow] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     setCurrentLessonNo(1);
@@ -76,6 +77,7 @@ export default function App() {
     setUserLoggedIn(false);
     setUserCompleted([]);
     setUserId("");
+    setIsAdmin(false);
   };
 
   const showNewUserModal = () => {
@@ -128,6 +130,9 @@ export default function App() {
           setUserLoggedIn(true);
           setLoginShow(false);
           setUserId(result.data.UserId);
+          if (result.data.isAdmin) {
+            setIsAdmin(true);
+          }
         } else if (result.data.message === "invalid user") {
           setUserLoggedIn(false);
         }

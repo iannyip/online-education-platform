@@ -15,7 +15,19 @@ export default function initUsersController(db) {
       const authedUser = await db.User.findOne({ where: request.body });
       if (authedUser !== null) {
         response.cookie("UserId", authedUser.id);
-        response.send({ message: "valid user", UserId: authedUser.id });
+        if (authedUser.name === "admin") {
+          response.send({
+            message: "valid user",
+            UserId: authedUser.id,
+            isAdmin: true,
+          });
+        } else {
+          response.send({
+            message: "valid user",
+            UserId: authedUser.id,
+            isAdmin: false,
+          });
+        }
       } else {
         response.send({ message: "invalid user" });
       }
