@@ -10,7 +10,14 @@ export default function MainNav({
   isAdmin,
 }) {
   return (
-    <Navbar collapseOnSelect expand="md" bg="light" variant="light" fixed="top">
+    <Navbar
+      className="drop-shadow"
+      collapseOnSelect
+      expand="md"
+      bg="light"
+      variant="light"
+      fixed="top"
+    >
       <Container>
         <Navbar.Brand className="lead" href="#">
           <b> 💡 B R I L L I A N</b>
