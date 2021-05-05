@@ -192,7 +192,7 @@ export default function App() {
       )}
       {view === "learn" && (
         <div className="row mt-4">
-          <div className="col-4 mt-4">
+          <div className="col-md-4 mt-4">
             {lessonTitles && (
               <LeftMenu
                 LessonTitles={lessonTitles}
@@ -202,7 +202,7 @@ export default function App() {
               />
             )}
           </div>
-          <div className="col-8 mt-4">
+          <div className="col-md-8 mt-4">
             <div className="row lesson-content">
               {currentLesson && (
                 <LessonTitle className="col-12" currentLesson={currentLesson} />
