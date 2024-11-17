@@ -3,6 +3,13 @@
 Online coding platform
 Inspired by brilliant.org, a learning platform.
 
+<div align='center'><img width="800" alt="image" src="https://github.com/user-attachments/assets/f04f6125-3802-48a4-a0cd-f88bca395334"></div>
+<div align='center'><img width="800" alt="image" src="https://github.com/user-attachments/assets/e3a19b8c-f900-4913-99ba-af14a3f5026d"></div>
+
+
+
+
+
 ## Features
 
 - In-built code editor to run code within the app.
